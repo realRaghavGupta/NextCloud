@@ -1,28 +1,26 @@
 #Step 1
 ###Root Login
 	To log into your server, you will need to know your server's public IP address and the password for the "root" user's account.
-
 ```ShellSession
 ssh root@SERVER_IP_ADDRESS
 ```
 ```ShellSession
 apt-get update
 ```
-	{no need to add sudo, since we are already root}
+		{no need to add sudo, since we are already root}
 ```ShellSession
 apt-get dist-upgrade
 ```
-	{to update the system with lates patches}
+		{to update the system with lates patches}
 ###Add non root user
-
-		adduser xyz {xyz can be any user}
-
+```ShellSession
+	adduser xyz
+```
+		{xyz can be any user}
 ###Add the user to sudo group
-		
-		usermod -aG sudo xyz
-
-			####add details for the user
-
+```ShellSession
+usermod -aG sudo xyz
+```
 ###Add Public Key Authentication (Recommended)
 		
 	Generate a Key Pair
