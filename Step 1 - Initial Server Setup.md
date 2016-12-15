@@ -59,9 +59,9 @@
 		ssh xyz@132.158.65.24
 
 ###Setup Basic Firewall
-		sudo ufw allow 1555/tcp	{ssh port}
-		sudo ufw allow 80/tcp 	{http port}
-		sudo ufw allow 443/tcp 	{https port}
+>sudo ufw allow 1555/tcp	{ssh port}
+>sudo ufw allow 80/tcp 		{http port}
+>sudo ufw allow 443/tcp 	{https port}
 ###Enable Firewall
 		sudo ufw enable
 
