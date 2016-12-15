@@ -7,68 +7,51 @@ ssh root@SERVER_IP_ADDRESS
 ```ShellSession
 apt-get update
 ```
-		{no need to add sudo, since we are already root}
+			{no need to add sudo, since we are already root}
 ```ShellSession
 apt-get dist-upgrade
 ```
-		{to update the system with lates patches}
+			{to update the system with lates patches}
 ###Add non root user
 ```ShellSession
-	adduser xyz
+adduser xyz
 ```
-		{xyz can be any user}
+			{xyz can be any user}
 ###Add the user to sudo group
 ```ShellSession
 usermod -aG sudo xyz
 ```
-###Add Public Key Authentication (Recommended)
-		
-	Generate a Key Pair
-			ssh-keygen
-
-		su - xyz
-		mkdir ~/.ssh
-		chmod 700 ~/.ssh
-		nano ~/.ssh/authorized_keys
-			Insert public key
-		Hit CTRL-x to exit the file, then y to save changes
-
-	Restrict permissions to file
-		chmod 600 ~/.ssh/authorized_keys
-
-		####return to root
-			exit
-
 ###Edit SSh Daemon for security
-
-	nano /etc/ssh/sshd_config
-
-		Change Port 22 to any other port {we use the port 1555 for this guide}
-		Change PermitRootLogin to no
-
-		systemctl reload sshd
-			OR
-		systemctl restart sshd
-
-###Test Log in
-		ssh xyz@132.158.65.24
-
+```ShellSession
+nano /etc/ssh/sshd_config
+```
+			Change Port 22 to any other port {we use the port 1555 for this guide}
+```ShellSession
+Port 1555
+```
+			Change PermitRootLogin to no
+```ShellSession
+PermitRootLogin no
+```
+			Reload SSH Daemon
+```ShellSession
+systemctl reload sshd
+```
 ###Setup Basic Firewall
 ```ShellSession
-
-	sudo ufw allow 1555/tcp	{ssh port}
-	sudo ufw allow 80/tcp 		{http port}
-	sudo ufw allow 443/tcp 	{https port}
+sudo ufw allow 1555/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
 ```
-
 ###Enable Firewall
-		sudo ufw enable
-
+```ShellSession
+sudo ufw enable
+```
 ###Configure Timezones
-		sudo dpkg-reconfigure tzdata
-
+```ShellSession
+sudo dpkg-reconfigure tzdata
+```
 ###Configure NTP Synchronization
-		sudo apt-get install ntp
-
-
-		
+```ShellSession
+sudo apt-get install ntp
+```
