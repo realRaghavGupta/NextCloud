@@ -18,8 +18,44 @@
 
 ###Add non root user
 
-		adduser xyz
+		adduser xyz {xyz can be any user}
 
 ###Add the user to sudo group
 		
 		usermod -aG sudo xyz
+
+			####add details for the user
+
+###Add Public Key Authentication (Recommended)
+		
+		####Generate a Key Pair
+			ssh-keygen
+
+		su - xyz
+		mkdir ~/.ssh
+		chmod 700 ~/.ssh
+		nano ~/.ssh/authorized_keys
+			Insert public key
+		Hit CTRL-x to exit the file, then y to save changes
+
+		####Restrict permissions to file
+		chmod 600 ~/.ssh/authorized_keys
+
+		####return to root
+			exit
+
+###Edit SSh Daemon for security
+
+	nano /etc/ssh/sshd_config
+
+		Change Port 22 to any other port {we use the port 1555 for this guide}
+		Change PermitRootLogin to no
+
+		systemctl reload sshd
+			OR
+		systemctl restart sshd
+
+###Test Log in
+		ssh xyz@132.158.65.24
+
+		
