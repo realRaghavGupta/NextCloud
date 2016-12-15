@@ -1,21 +1,18 @@
 #Step 1
+###Root Login
+	To log into your server, you will need to know your server's public IP address and the password for the "root" user's account.
 
-	Span a Digital Ocean droplet (or any other of your choice, the guide will assume you have a VPS)
-
-		setup SSH key to use with the droplet by adding key during initial setup only
-
-	let the IP address be 132.158.65.24
-
-	login to droplet
-		ssh root@132.158.65.24 
-		if using with key: ssh -I " key " root@132.158.65.24   {from linux shell}
-
-	update the sources
-		apt-get update	{no need to add sudo, since we are already root}
-
-	update the system
-		apt-get dist-upgrade {to update the system with lates patches}
-
+```ShellSession
+ssh root@SERVER_IP_ADDRESS
+```
+```ShellSession
+apt-get update
+```
+	{no need to add sudo, since we are already root}
+```ShellSession
+apt-get dist-upgrade
+```
+	{to update the system with lates patches}
 ###Add non root user
 
 		adduser xyz {xyz can be any user}
