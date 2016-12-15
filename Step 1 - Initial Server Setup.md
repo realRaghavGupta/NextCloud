@@ -59,7 +59,7 @@
 		ssh xyz@132.158.65.24
 
 ###Setup Basic Firewall
-```Shell
+```ShellSession
 
 	sudo ufw allow 1555/tcp	{ssh port}
 	sudo ufw allow 80/tcp 		{http port}
