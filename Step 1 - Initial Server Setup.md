@@ -28,7 +28,7 @@
 
 ###Add Public Key Authentication (Recommended)
 		
-		####Generate a Key Pair
+	Generate a Key Pair
 			ssh-keygen
 
 		su - xyz
@@ -38,7 +38,7 @@
 			Insert public key
 		Hit CTRL-x to exit the file, then y to save changes
 
-		####Restrict permissions to file
+	Restrict permissions to file
 		chmod 600 ~/.ssh/authorized_keys
 
 		####return to root
