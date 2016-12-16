@@ -1,6 +1,6 @@
 #Step 1
 ###Root Login
->	To log into your server, you will need to know your server's public IP address and the password for the "root" user's account.
+	To log into your server, you will need to know your server's public IP address and the password for the "root" user's account.
 ```ShellSession
 ssh root@SERVER_IP_ADDRESS
 ```
@@ -14,18 +14,18 @@ apt-get dist-upgrade
 			{to update the system with lates patches}
 
 ###Add non root user
->```ShellSession
+```ShellSession
 adduser xyz
 ```
 			{xyz can be any user}
 
 ###Add the user to sudo group
->```ShellSession
+```ShellSession
 usermod -aG sudo xyz
 ```
 
 ###Edit SSh Daemon for security
->```ShellSession
+```ShellSession
 nano /etc/ssh/sshd_config
 ```
 			Change Port 22 to any other port {we use the port 1555 for this guide}
@@ -42,23 +42,23 @@ systemctl reload sshd
 ```
 
 ###Setup Basic Firewall
->```ShellSession
+```ShellSession
 sudo ufw allow 1555/tcp
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
 ```
 
 ###Enable Firewall
->```ShellSession
+```ShellSession
 sudo ufw enable
 ```
 
 ###Configure Timezones
->```ShellSession
+```ShellSession
 sudo dpkg-reconfigure tzdata
 ```
 
 ###Configure NTP Synchronization
->```ShellSession
+```ShellSession
 sudo apt-get install ntp
 ```
